@@ -794,6 +794,7 @@ GameObject:
   - component: {fileID: 433713636}
   - component: {fileID: 433713638}
   - component: {fileID: 433713637}
+  - component: {fileID: 433713639}
   m_Layer: 0
   m_Name: ExitSpot
   m_TagString: ExitSpot
@@ -863,6 +864,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433713635}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!136 &433713639
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433713635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 3.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &460337507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1234,9 +1249,10 @@ GameObject:
   - component: {fileID: 557350784}
   - component: {fileID: 557350786}
   - component: {fileID: 557350785}
+  - component: {fileID: 557350787}
   m_Layer: 0
   m_Name: MicrowaveSpot
-  m_TagString: Untagged
+  m_TagString: ServiceSpot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1303,6 +1319,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 557350783}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!136 &557350787
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557350783}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 3.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &596041888
 GameObject:
   m_ObjectHideFlags: 0
@@ -2580,7 +2610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitForCustomer: 0.5
-  serviceRate: 20
+  serviceRate: 30
   minServiceTime: 0.1
   serviceSpot: {fileID: 557350784}
   exitSpot: {fileID: 433713636}
@@ -3053,6 +3083,22 @@ PrefabInstance:
     - target: {fileID: 100006, guid: d7f2ead0f57364e5bbcda9f679e509a0, type: 3}
       propertyPath: m_Name
       value: PW_microwave
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d7f2ead0f57364e5bbcda9f679e509a0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d7f2ead0f57364e5bbcda9f679e509a0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d7f2ead0f57364e5bbcda9f679e509a0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: d7f2ead0f57364e5bbcda9f679e509a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: d7f2ead0f57364e5bbcda9f679e509a0, type: 3}
       propertyPath: m_LocalPosition.x

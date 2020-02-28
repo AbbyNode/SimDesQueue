@@ -72,9 +72,11 @@ public class ArrivalQueueController : MonoBehaviour {
 			return null;
 		} else {
 			GameObject go = arrivalQueue.Dequeue();
-			if (arrivalQueue.Count >= 1) {
+			if (arrivalQueue.Count >= 1) { // more people in queue
 				GameObject goFirst = arrivalQueue.Peek();
 				goFirst.GetComponent<CustomerController>().SetDestination(lineupSpot);
+			} else { // no one left in queue, reset last spot
+				lastPlaceInQueue = lineupSpot;
 			}
 
 			return go;

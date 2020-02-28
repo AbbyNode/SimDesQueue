@@ -42,15 +42,12 @@ public class ServiceController : MonoBehaviour {
 			if (go == null) {
 				yield return new WaitForSeconds(waitForCustomer); // wait one frame
 			} else {
-				go.GetComponent<CustomerController>().SetDestination(serviceSpot);
+				CustomerController customerController = go.GetComponent<CustomerController>();
 
-				NavMeshAgent agent = go.GetComponent<NavMeshAgent>();
+				customerController.SetDestination(serviceSpot);
 
-				if (agent.pathPending) {
-					yield return new WaitForSeconds(waitForCustomer);
-				}
-
-				if (agent.remainingDistance >= agent.stoppingDistance) {
+				// Wait till customer reached service spot
+				while (!customerController.atServiceSpot) {
 					yield return new WaitForSeconds(waitForCustomer);
 				}
 
@@ -60,11 +57,8 @@ public class ServiceController : MonoBehaviour {
 
 				yield return new WaitForSeconds(service_time_in_seconds);
 
-				go.GetComponent<CustomerController>().SetDestination(exitSpot);
-
+				customerController.SetDestination(exitSpot);
 			}
 		}
-
 	}
-
 }

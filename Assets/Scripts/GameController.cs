@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void ToggleArrivals(bool toggle) {
-		this.generatingArrivals = toggle;
+		generatingArrivals = toggle;
 
 		if (toggle) {
 			arrivalQueueController.StartArrivals();
@@ -33,7 +33,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void ToggleServices(bool toggle) {
-		this.isServicing = toggle;
+		isServicing = toggle;
 
 		if (toggle) {
 			serviceController.StartServices();

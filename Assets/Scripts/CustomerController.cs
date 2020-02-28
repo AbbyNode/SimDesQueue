@@ -6,6 +6,8 @@ using UnityEngine.AI;
 public class CustomerController : MonoBehaviour {
 	public Transform followSpot;
 
+	public bool atServiceSpot;
+
 	private Transform target;
 	private NavMeshAgent navMeshAgent;
 
@@ -27,8 +29,15 @@ public class CustomerController : MonoBehaviour {
 	}
 
 	public void OnTriggerEnter(Collider other) {
-		if (other.gameObject.tag == "ExitSpot") {
-			Destroy(gameObject);
+		print(other.tag);
+
+		switch (other.tag) {
+			case "ServiceSpot":
+				atServiceSpot = true;
+				break;
+			case "ExitSpot":
+				Destroy(gameObject);
+				break;
 		}
 	}
 }
