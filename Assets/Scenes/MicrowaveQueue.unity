@@ -2650,6 +2650,7 @@ MonoBehaviour:
   - {fileID: 433713637}
   generatingArrivals: 0
   isServicing: 0
+  timeScale: 60
 --- !u!1 &1364187719
 GameObject:
   m_ObjectHideFlags: 0

@@ -52,8 +52,8 @@ public class ServiceController : MonoBehaviour {
 				}
 
 				float service_time_in_seconds = Queue_Utilities.ExpDist(serviceRate); //this is in min
-				service_time_in_seconds *= 60;
-				print("service_time_in_seconds:" + service_time_in_seconds);
+				service_time_in_seconds *= 60 * 60 / gameController.timeScale;
+				print("Next service in: " + service_time_in_seconds + " (s)");
 
 				yield return new WaitForSeconds(service_time_in_seconds);
 

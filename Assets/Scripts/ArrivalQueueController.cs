@@ -12,8 +12,8 @@ public class ArrivalQueueController : MonoBehaviour {
 	Queue<GameObject> arrivalQueue = new Queue<GameObject>();
 	//public Queue_Utilities queue_Utilities; //=new Queue_Utilities();
 
-	public float arrival_rate = 60; //arrival / min
-	//public float arrival_rate = 1f; //arrivals / sec
+	public float arrival_rate = 24; //arrival / hour
+									//public float arrival_rate = 1f; //arrivals / sec
 
 	private GameController gameController;
 
@@ -30,11 +30,11 @@ public class ArrivalQueueController : MonoBehaviour {
 
 	IEnumerator GenerateArrivals() {
 		while (gameController.generatingArrivals == true) {
-			float inter_arrival_time_in_seconds = Queue_Utilities.ExpDist(arrival_rate); //this is in min
+			float inter_arrival_time_in_seconds = Queue_Utilities.ExpDist(arrival_rate); //this is in hours
 			//float inter_arrival_time_in_seconds = Queue_Utilities.ObservedDist(); //this is in sec
 
-			inter_arrival_time_in_seconds *= 60;
-			//print("inter_arrival_time_in_seconds: " + inter_arrival_time_in_seconds);
+			inter_arrival_time_in_seconds *= 60 * 60 / gameController.timeScale; // from hours
+			print("Next arrival in: " + inter_arrival_time_in_seconds + " (s)");
 			//StartCoroutine(GenerateArrivals());
 			yield return new WaitForSeconds(inter_arrival_time_in_seconds);
 

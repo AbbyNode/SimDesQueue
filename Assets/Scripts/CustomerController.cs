@@ -29,8 +29,6 @@ public class CustomerController : MonoBehaviour {
 	}
 
 	public void OnTriggerEnter(Collider other) {
-		print(other.tag);
-
 		switch (other.tag) {
 			case "ServiceSpot":
 				atServiceSpot = true;

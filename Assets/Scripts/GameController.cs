@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour {
 	public bool generatingArrivals = false;
 	public bool isServicing = false;
 
+	public float timeScale = 1;
+
 	private ArrivalQueueController arrivalQueueController;
 	private ServiceController serviceController;
 
