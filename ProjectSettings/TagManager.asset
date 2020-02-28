@@ -4,9 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Desk
-  - WaitingRoom
-  - ExitDoor
+  - ExitSpot
   layers:
   - Default
   - TransparentFX
