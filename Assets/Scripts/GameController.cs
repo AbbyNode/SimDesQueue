@@ -49,4 +49,10 @@ public class GameController : MonoBehaviour {
 			mesh.enabled = toggle;
 		}
 	}
+
+	public void timeScaleChanged(string value)
+	{
+		float newVal = float.Parse(value);
+		timeScale = newVal;
+	}
 }
