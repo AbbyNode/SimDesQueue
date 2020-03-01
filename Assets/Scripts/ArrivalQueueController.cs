@@ -82,4 +82,10 @@ public class ArrivalQueueController : MonoBehaviour {
 			return go;
 		}
 	}
+
+	public void arrivalRateChanged(string value)
+	{
+		float newVal = float.Parse(value);
+		arrival_rate = newVal;
+	}
 }

@@ -61,4 +61,10 @@ public class ServiceController : MonoBehaviour {
 			}
 		}
 	}
+
+	public void serviceRateChanged(string value)
+	{
+		float newVal = float.Parse(value);
+		serviceRate = newVal;
+	}
 }
