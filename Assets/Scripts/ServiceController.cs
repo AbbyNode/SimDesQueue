@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 
 public class ServiceController : MonoBehaviour {
 	public float waitForCustomer = .5f; // sec
 	public float serviceRate = 0.8f;// rate in mins
 	public float minServiceTime = 10f/60f; // Lowest possible service time in mins
+
+	public Text serviceTimeLeft;
 
 	public Transform serviceSpot;
 	public Transform exitSpot;
@@ -53,9 +56,14 @@ public class ServiceController : MonoBehaviour {
 
 				float service_time_in_seconds = Queue_Utilities.ExpDist(serviceRate); //this is in min
 				service_time_in_seconds *= 60 * 60 / gameController.timeScale;
-				print("Next service in: " + service_time_in_seconds + " (s)");
+				//print("Next service in: " + service_time_in_seconds + " (s)");
 
-				yield return new WaitForSeconds(service_time_in_seconds);
+				for (int x = (int)service_time_in_seconds; x > 0; x--)
+				{
+					serviceTimeLeft.text = x.ToString();
+					yield return new WaitForSeconds(1);
+					
+				}
 
 				customerController.SetDestination(exitSpot);
 			}

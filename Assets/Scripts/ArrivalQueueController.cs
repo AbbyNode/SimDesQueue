@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ArrivalQueueController : MonoBehaviour {
 	public GameObject customerPrefab;
 	public Transform customerSpawnPlace;
 	public Transform lineupSpot;
+
+	public Text arrivalTimeLeft;
 
 	Transform lastPlaceInQueue;
 
@@ -34,9 +37,15 @@ public class ArrivalQueueController : MonoBehaviour {
 			//float inter_arrival_time_in_seconds = Queue_Utilities.ObservedDist(); //this is in sec
 
 			inter_arrival_time_in_seconds *= 60 * 60 / gameController.timeScale; // from hours
-			print("Next arrival in: " + inter_arrival_time_in_seconds + " (s)");
+			//print("Next arrival in: " + inter_arrival_time_in_seconds + " (s)");
 			//StartCoroutine(GenerateArrivals());
-			yield return new WaitForSeconds(inter_arrival_time_in_seconds);
+			//yield return new WaitForSeconds(inter_arrival_time_in_seconds);
+			for (int x = (int)inter_arrival_time_in_seconds; x > 0; x--)
+			{
+				arrivalTimeLeft.text = x.ToString();
+				yield return new WaitForSeconds(1);
+				
+			}
 
 			GameObject go = Instantiate(customerPrefab, customerSpawnPlace.position, Quaternion.identity);
 			go.GetComponent<CustomerController>().SetDestination(lastPlaceInQueue);
