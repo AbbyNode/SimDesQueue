@@ -49,7 +49,7 @@ public class ArrivalQueueController : MonoBehaviour {
 
 			GameObject go = Instantiate(customerPrefab, customerSpawnPlace.position, Quaternion.identity);
 			go.GetComponent<CustomerController>().SetDestination(lastPlaceInQueue);
-			lastPlaceInQueue = go.GetComponent<CustomerController>().followSpot.transform;
+			lastPlaceInQueue = go.transform;
 			//go.GetComponent<CustomerController>().SetDestination()
 
 			arrivalQueue.Enqueue(go);
@@ -95,6 +95,10 @@ public class ArrivalQueueController : MonoBehaviour {
 	public void arrivalRateChanged(string value)
 	{
 		float newVal = float.Parse(value);
+		if (newVal > 50) {
+			Debug.Log("Arrival rate too high. Setting to 50.");
+			newVal = 50;
+		}
 		arrival_rate = newVal;
 	}
 }
